@@ -16,7 +16,7 @@ script:
   - cd qtstyleplugins
   - qmake
   - make -j$(nproc)
-  - make install
+  - sudo make install
   - cd -
   - qmake CONFIG+=release PREFIX=/usr
   - make -j$(nproc)
