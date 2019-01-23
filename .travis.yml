@@ -8,10 +8,16 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get -y install qt510base qt510multimedia qt510svg qt510x11extras qt510translations libx11-dev libxtst-dev tesseract-ocr-eng
+  - sudo apt-get -y install libgtk2.0-dev qt510base qt510multimedia qt510svg qt510x11extras qt510translations libx11-dev libxtst-dev tesseract-ocr-eng
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
+  - git clone http://code.qt.io/qt/qtstyleplugins.git
+  - cd qtstyleplugins
+  - qmake
+  - make -j$(nproc)
+  - make install
+  - cd -
   - qmake CONFIG+=release PREFIX=/usr
   - make -j$(nproc)
   - mkdir -p appdir/usr/bin/ appdir/usr/share/applications/ appdir/usr/share/applications/ appdir/usr/share/icons/hicolor/scalable/apps usr/share/metainfo
