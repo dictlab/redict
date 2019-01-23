@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Name=Redict
-Exec=QT_QPA_PLATFORMTHEME=gtk2 redict
+Exec=redict
 Icon=redict
 Comment=A dictionary based on C++/Qt development
 Categories=Office;Dictionary;

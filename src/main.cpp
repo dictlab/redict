@@ -45,6 +45,8 @@ int main(int argc, char *argv[])
     a.setApplicationName("redict");
 
 #ifdef Q_OS_UNIX
+    qputenv("QT_QPA_PLATFORMTHEME", "gtk2");
+
     QSettings lock_file(QDir::homePath() + "/.redict/redict.pid", QSettings::IniFormat);
     QString last_pid = lock_file.value("LastStart/pid").toString();
     if (last_pid.length() && QDir("/proc/" + last_pid).exists() &&
