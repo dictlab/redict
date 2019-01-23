@@ -8,21 +8,16 @@ before_install:
   - sudo apt-get update -qq
 
 install:
-  - sudo apt-get -y install libgtk2.0-dev qt510base qt510multimedia qt510svg qt510x11extras qt510translations libx11-dev libxtst-dev tesseract-ocr-eng
+  - sudo apt-get -y install qt510base qt510multimedia qt510svg qt510x11extras qt510translations libx11-dev libxtst-dev tesseract-ocr-eng
   - source /opt/qt*/bin/qt*-env.sh
 
 script:
-  - git clone http://code.qt.io/qt/qtstyleplugins.git
-  - cd qtstyleplugins
-  - qmake
-  - make -j$(nproc)
-  - sudo make install
-  - cd -
   - qmake CONFIG+=release PREFIX=/usr
   - make -j$(nproc)
-  - mkdir -p appdir/usr/bin/ appdir/usr/share/applications/ appdir/usr/share/applications/ appdir/usr/share/icons/hicolor/scalable/apps
+  - mkdir -p appdir/usr/bin/ appdir/usr/share/applications/ appdir/usr/share/applications/ appdir/usr/share/icons/hicolor/scalable/apps usr/share/metainfo
   - cp redict appdir/usr/bin/
   - cp redict.desktop appdir/usr/share/applications/
+  - cp redict.appdata.xml usr/share/metainfo/
   - cp images/redict.svg appdir/usr/share/icons/hicolor/scalable/apps/redict.svg
   - find appdir/
   - wget -c -nv "https://github.com/probonopd/linuxdeployqt/releases/download/continuous/linuxdeployqt-continuous-x86_64.AppImage"
