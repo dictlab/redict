@@ -5,7 +5,7 @@
 #include <QVBoxLayout>
 #include <QButtonGroup>
 
-#define BUTTON_ITEM_HEIGHT 35
+#define BUTTON_ITEM_HEIGHT 45
 
 class SideBar : public QWidget
 {
